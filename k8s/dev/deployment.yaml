@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: census-api
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: census
+  template:
+    metadata:
+      labels:
+        app: census
+    spec:
+      containers:
+        - name: census-api
+          image: census-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+
